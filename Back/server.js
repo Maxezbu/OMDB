@@ -13,6 +13,7 @@ const localStrategy = require("passport-local").Strategy;
 const { User } = require("./models/index");
 
 const routes = require("./routes");
+const store = new sessions.MemoryStore();
 
 app.use(morgan("combined"));
 
@@ -27,8 +28,9 @@ app.use(cookieParser());
 app.use(
   sessions({
     secret: "initialization",
-    resave: true,
+    resave: "true",
     saveUninitialized: true,
+    store: store,
   })
 );
 
@@ -68,7 +70,7 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (id, done) {
   User.findByPk(id)
     .then((user) => {
-      done(null, user);
+      done(null, user.get());
     })
     .catch(done);
 });
@@ -81,7 +83,7 @@ app.use((err, req, res, next) => {
 });
 
 db.sync({ force: false }).then(() => {
-  app.listen(3001, () => {
+  app.listen(8000, () => {
     console.log("Servidor Conectado");
   });
 });

@@ -13,7 +13,9 @@ export const SingleMovie = (props) => {
   const movie = useSelector((state) => state.singleMovie);
 
   const user = useSelector((state) => state.user);
-  console.log(movie.imdbID);
+
+  console.log("...........-----------------", user);
+
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -60,7 +62,7 @@ export const SingleMovie = (props) => {
           color="secondary"
           variant="contained"
           disableElevation
-          onClick={() => history.push("/favorites")}
+          onClick={() => history.push(`/favorites`)}
           size="small"
         >
           MIS FAVORITOS

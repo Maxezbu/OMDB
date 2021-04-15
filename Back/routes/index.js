@@ -42,6 +42,7 @@ route.delete("/favorites/:id", (req, res) => {
 });
 
 route.get("/me", (req, res) => {
+  console.log("---------------------------", req.user);
   if (req.user) {
     res.send(req.user);
   }

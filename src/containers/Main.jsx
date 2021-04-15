@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
@@ -8,6 +8,8 @@ import { Movies } from "../components/Movies";
 import { Register } from "../components/Register";
 import { Login } from "../components/Login";
 import { Navbar } from "../components/NavBar";
+import { me } from "../store/user";
+import { useDispatch } from "react-redux";
 
 export const Main = () => {
   return (

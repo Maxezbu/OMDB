@@ -4,14 +4,17 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setFavs } from "../store/favs";
 
+import { me } from "../store/user";
+
 import { Button, Grid, Typography, Box } from "@material-ui/core";
 
 export const Favorites = () => {
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-
   const favs = useSelector((state) => state.favorites);
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  console.log("---------------------", user);
 
   useEffect(() => {
     axios
